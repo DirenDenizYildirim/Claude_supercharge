@@ -33,12 +33,6 @@
       "category": "mod"
     },
     {
-      "name": "savvy-flow",
-      "source": "./mods/savvy-flow",
-      "description": "Skill + agents: plan, delegate to tiered worker subagents, review. Drives the savvy-progress bar.",
-      "category": "skill"
-    },
-    {
       "name": "reflect-mod",
       "source": "./mods/reflect-mod",
       "description": "Mod: checks short prompts for corrections and offers to save them as CLAUDE.md rules from a band above the prompt.",

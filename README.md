@@ -12,7 +12,6 @@ Mods are built on function hooks (`hooks/register.tsx`), an early-access Claude 
 | [filetree](mods/filetree) | mod | `/filetree` | An IDE-style file tree pane with git status and line counts. Files Claude reads or edits shimmer. | [data-goblin/claude-code-filetree](https://github.com/data-goblin/claude-code-filetree) (`b0e4098`) | MIT |
 | [replay-theater](mods/replay-theater) | mod | `/replay` | Steps through the file edits from the last turn, one diff at a time. | [anthropics/claude-code-playground](https://github.com/anthropics/claude-code-playground/tree/main/claude-code/mods/replay-theater) (`569c528`) | Apache-2.0 |
 | [savvy-progress](mods/savvy-progress) | mod | `/agents-info` | A progress bar above the prompt and a live panel listing running subagents. | [JohnnyVizz/claude-kit](https://github.com/JohnnyVizz/claude-kit/tree/main/plugins/savvy-progress) (`272a877`) | MIT |
-| [savvy-flow](mods/savvy-flow) | skill + agents | `/savvy-flow:savvy-flow <task>` | The session model plans the task, hands parts to tiered worker subagents, and reviews their work. It drives the savvy-progress bar. | [JohnnyVizz/claude-kit](https://github.com/JohnnyVizz/claude-kit/tree/main/plugins/savvy-flow) (`272a877`) | MIT |
 | [reflect-mod](mods/reflect-mod) | mod | `/reflect-queue`, `/reflect-pause` | Checks each short prompt for a correction. When it finds one, it offers to save it as a `CLAUDE.md` rule from a band above the prompt. | [BayramAnnakov/claude-reflect](https://github.com/BayramAnnakov/claude-reflect/tree/main/mod) (`b6c4232`) | MIT |
 
 Each folder keeps its upstream `README.md` and `LICENSE`. Only the files needed to run each mod were copied: the manifest, `hooks/`, `types/`, `skills/` and `agents/`. Tests, media and CI were left out.
@@ -22,7 +21,7 @@ Each folder keeps its upstream `README.md` and `LICENSE`. Only the files needed 
 - **filetree** draws only on the `terminal` and `desktop` surfaces. The Claude mobile app shows nothing for it.
 - **skins**: the `/skin` settings pane is not available on mobile. `/skin <name>` still switches themes there. On startup, skins fetches its own upstream `plugin.json` to check for updates.
 - **reflect-mod** sends each short prompt (500 characters or less, no slash commands or acknowledgements) to `haiku` through `$.model.complete`, so it costs a small number of tokens per prompt. It writes to `CLAUDE.md` only when you press Save in its band. `/reflect-pause` turns it off.
-- **savvy-flow** agents request the `opus` model, and `savvy-fable` requests `fable`.
+- **savvy-progress** was built to pair with the savvy-flow skill from the same repo, which was left out on purpose. On its own it still shows any subagents.
 - The upstream `claude-reflect` Python plugin was left out on purpose. Its name is reserved, so it fails validation, and upstream says to run the plugin or the mod, never both.
 
 ## Loading them
@@ -32,7 +31,7 @@ Each folder keeps its upstream `README.md` and `LICENSE`. Only the files needed 
 Set this environment variable in the cloud environment's settings (open the environment menu in the session's title bar, then choose **Edit**). New sessions pick it up:
 
 ```
-CLAUDE_CODE_PLUGIN_DIRS=/home/user/Claude_supercharge/mods/skins:/home/user/Claude_supercharge/mods/filetree:/home/user/Claude_supercharge/mods/replay-theater:/home/user/Claude_supercharge/mods/savvy-progress:/home/user/Claude_supercharge/mods/savvy-flow:/home/user/Claude_supercharge/mods/reflect-mod
+CLAUDE_CODE_PLUGIN_DIRS=/home/user/Claude_supercharge/mods/skins:/home/user/Claude_supercharge/mods/filetree:/home/user/Claude_supercharge/mods/replay-theater:/home/user/Claude_supercharge/mods/savvy-progress:/home/user/Claude_supercharge/mods/reflect-mod
 ```
 
 Drop any path to leave that mod out.
