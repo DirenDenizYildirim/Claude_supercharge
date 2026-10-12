@@ -1,0 +1,48 @@
+{
+  "name": "supercharge",
+  "owner": {
+    "name": "DirenDenizYildirim",
+    "url": "https://github.com/DirenDenizYildirim"
+  },
+  "metadata": {
+    "description": "Vendored Claude Code mods, skills and plugins for trying out UI upgrades."
+  },
+  "plugins": [
+    {
+      "name": "skins",
+      "source": "./mods/skins",
+      "description": "Mod: tool rows with icons, diff, table and Mermaid cards, a usage band and fifteen themes. /skin swaps them live.",
+      "category": "mod"
+    },
+    {
+      "name": "filetree",
+      "source": "./mods/filetree",
+      "description": "Mod: an IDE-style file tree pane with git status and a shimmer on files Claude touches. /filetree toggles it.",
+      "category": "mod"
+    },
+    {
+      "name": "replay-theater",
+      "source": "./mods/replay-theater",
+      "description": "Mod: step through the file edits Claude made in the last turn, one diff at a time. /replay opens it.",
+      "category": "mod"
+    },
+    {
+      "name": "savvy-progress",
+      "source": "./mods/savvy-progress",
+      "description": "Mod: a progress bar above the prompt and a live agents panel for subagents.",
+      "category": "mod"
+    },
+    {
+      "name": "savvy-flow",
+      "source": "./mods/savvy-flow",
+      "description": "Skill + agents: plan, delegate to tiered worker subagents, review. Drives the savvy-progress bar.",
+      "category": "skill"
+    },
+    {
+      "name": "reflect-mod",
+      "source": "./mods/reflect-mod",
+      "description": "Mod: checks short prompts for corrections and offers to save them as CLAUDE.md rules from a band above the prompt.",
+      "category": "mod"
+    }
+  ]
+}
